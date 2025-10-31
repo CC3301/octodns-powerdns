@@ -87,7 +87,7 @@ class PowerDnsBaseProvider(BaseProvider):
     if SUPPORTS_URI:  # pragma: no cover
         SUPPORTS.add('URI')
 
-    TIMEOUT = 5
+    TIMEOUT = 60
 
     POWERDNS_MODES_OF_OPERATION = {
         'native',
