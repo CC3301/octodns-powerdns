@@ -21,7 +21,12 @@ try:  # pragma: no cover
 except ImportError:  # pragma: no cover
     SUPPORTS_SVCB = False
 
-SUPPORTS_URI = False
+try:  # pragma: no cover
+    from octodns.record.uri import UriValue
+
+    SUPPORTS_URI = True
+except ImportError:  # pragma: no cover
+    SUPPORTS_URI = False
 
 
 from .record import PowerDnsLuaRecord
