@@ -50,8 +50,6 @@ providers:
       # ssl_verify: true
       # Send DNS NOTIFY to secondary servers after change (optional, default false)
       # notify: false
-      # HTTP Request Timeout in Minutes (optiona, default 5)
-      # timeout: 5
 ```
 
 ### Support Information
