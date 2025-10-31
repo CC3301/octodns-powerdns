@@ -21,14 +21,6 @@ try:  # pragma: no cover
 except ImportError:  # pragma: no cover
     SUPPORTS_SVCB = False
 
-try:  # pragma: no cover
-    from octodns.record.uri import UriValue
-
-    SUPPORTS_URI = True
-except ImportError:  # pragma: no cover
-    SUPPORTS_URI = False
-
-
 from .record import PowerDnsLuaRecord
 
 # TODO: remove __VERSION__ with the next major version release
@@ -371,13 +363,6 @@ class PowerDnsBaseProvider(BaseProvider):
             'values': values,
         }
 
-    def _data_for_URI(self, rrset):
-        values = []
-        for record in rrset['records']:
-            value = UriValue.parse_rdata_text(record['content'])
-            values.append(value)
-        return {'type': rrset['type'], 'values': values, 'ttl': rrset['ttl']}
-
     @property
     def powerdns_version(self):
         if self._powerdns_version is None:
@@ -633,7 +618,6 @@ class PowerDnsBaseProvider(BaseProvider):
         ], record._type
 
     _records_for_HTTPS = _records_for_SVCB
-    _records_for_URI = _records_for_SVCB
 
     def _records_for_PowerDnsProvider_LUA(self, record):
         return [
